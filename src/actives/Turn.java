@@ -52,14 +52,19 @@ public class Turn {
     }
 
     private void handleLanding(int position) {
+    	
+    	
+    	// Handle Landing
         BoardLocation boardLocationAtPosition = board.getBoardEntities().get(position);
         if (boardLocationAtPosition instanceof Property) {
         	Property property = (Property) boardLocationAtPosition;
             if (property.getOwner() == null) {
                 if (decisionMaker.buyProperty(property)) {
-                    player.updateBalance(-property.getPrice());
-                    property.setOwner(player);
-                    player.addProperty(property);
+                	if (player.getBalance() > property.getPrice()) {
+                        player.updateBalance(-property.getPrice());
+                        property.setOwner(player);
+                        player.addProperty(property);
+                	}
                 }
             } else if (!property.getOwner().equals(player) && !property.isMortgaged()) {
                 int rent = calculateRent(property);

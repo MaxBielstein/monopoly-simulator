@@ -3,7 +3,6 @@ package actives;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import components.Board;
 import components.Player;
@@ -11,7 +10,6 @@ import components.Property;
 import components.PropertyColor;
 
 public class MaxDecisionMaker extends DecisionMaker {
-    private Random random = new Random();
     private Board board;
 
     @Override
